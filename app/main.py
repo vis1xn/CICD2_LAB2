@@ -7,6 +7,7 @@ app = FastAPI()
 def hello():
  return {"message": "Hello, World!"}
 
+
 @app.get("/api/users")
 def get_users():
     return users
