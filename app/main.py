@@ -7,7 +7,6 @@ app = FastAPI()
 def hello():
  return {"message": "Hello, World!"}
 
-
 @app.get("/api/users")
 def get_users():
     return users
@@ -25,3 +24,11 @@ def add_user(user: User):
          raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="user_id already exists")
     users.append(user)
     return user
+
+@app.delete("/api/{user_id}")
+def delete_user(user: User):
+    
+
+@app.get("/api/health")
+def health():
+    return{"status":"ok"}
