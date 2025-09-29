@@ -25,8 +25,8 @@ def add_user(user: User):
     users.append(user)
     return user
 
-@app.delete("/api/{user_id}")
-def delete_user(user: User):
+@app.delete("/api/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_user(user_id: int):
     if u.user_id == user_id:
         return {"message":"204 No Content"}
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
