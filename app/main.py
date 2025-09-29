@@ -25,10 +25,18 @@ def add_user(user: User):
     users.append(user)
     return user
 
+@app.put("/api/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+def update_user(user_id: int):
+    for u in users:
+        if u.user_id == user_id:
+         return {"message":"User updated"}
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
 @app.delete("/api/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_user(user_id: int):
-    if u.user_id == user_id:
-        return {"message":"204 No Content"}
+def delete_user(user_id: int):#
+    for u in users:
+        if u.user_id == user_id:
+         return {"message":"204 No Content"}
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
 
